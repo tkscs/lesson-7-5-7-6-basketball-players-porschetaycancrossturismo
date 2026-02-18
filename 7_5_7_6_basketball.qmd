@@ -1,0 +1,120 @@
+---
+title: "7_5_7_6_basketball"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(purrr)
+```
+
+# Load data
+
+```{r}
+df = read_csv("NBA Heights.csv")
+power_forwards = df |> drop_na() |> pull("Power Forwards")
+shooting_guards = df |> pull("Shooting Guards")
+```
+
+# Graph Power Forward Heights
+
+Mean:
+
+```{r}
+mean(power_forwards)
+```
+
+Standard deviation:
+
+```{r}
+sd(power_forwards)
+```
+
+Histogram:
+
+```{r}
+ggplot(NULL, aes(x = power_forwards)) +
+  geom_histogram(binwidth = 0.5)
+```
+
+# Take a random sample of 5 power forwards
+
+```{r}
+sample_of_5 = sample(power_forwards, 5)
+sample_of_5
+mean(sample_of_5)
+```
+
+# Graph 100 sample means
+
+```{r}
+sample_5_forwards = function(i) {
+  # Copy your code from "Take a random sample of 5 power forwards" here
+  
+  
+}
+sample_mean_heights = map_dbl(1:100, sample_5_forwards)
+ggplot(NULL, aes(x = sample_mean_heights)) +
+  geom_histogram(binwidth = 0.1)
+```
+
+Mean of sample means:
+
+```{r}
+mean(sample_mean_heights)
+```
+
+Standard deviation of sample means:
+
+```{r}
+sd(sample_mean_heights)
+```
+
+
+
+# Graph Shooting Guard Heights
+
+Mean:
+
+```{r}
+mean(shooting_guards)
+```
+
+Standard deviation:
+
+```{r}
+# copy and modify code from "Graph Power Forward Heights" section
+```
+
+
+Histogram:
+
+```{r}
+# copy and modify code from "Graph Power Forward Heights" section
+```
+
+
+# Take a random sample of 2 shooting guards
+
+```{r}
+# copy and modify code from "Take a random sample of 5 power forwards" section
+```
+
+# Take a random sample of 10 shooting guards
+
+```{r}
+# copy and modify code from "Take a random sample of 5 power forwards" section
+```
+
+# Graph the distributions of sample means (for samples of n=2)
+
+```{r}
+# copy and modify code from Graph 100 sample means where each sample has 2 shooting guards
+```
+
+# Graph the distributions of sample means (for samples of n=10)
+
+```{r}
+# copy and modify code from Graph 100 sample means where each sample has 10 shooting guards
+```
+
